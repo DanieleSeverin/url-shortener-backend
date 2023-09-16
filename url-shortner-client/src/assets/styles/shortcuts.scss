@@ -1,0 +1,143 @@
+// flex
+.d-flex{ display: flex!important; }
+.flex-column{ flex-direction: column!important; }
+.j-center{ justify-content: center!important; }
+.j-start{ justify-content: flex-start!important; }
+.j-end{ justify-content: flex-end!important; }
+.j-between{ justify-content: space-between!important; }
+.j-baseline{ justify-content: baseline!important; }
+.a-center{ align-items: center!important; }
+.a-start{ align-items: flex-start!important; }
+.a-end{ align-items: flex-end!important; }
+.a-between{ align-items: space-between!important; }
+.a-baseline{ align-items: baseline!important; }
+.self-center{ align-self: center!important; }
+.self-start{ align-self: flex-start!important; }
+.self-end{ align-self: flex-end!important; }
+
+// width %
+@for $i from 1 through 100 {
+    .w-#{$i} { 
+        width: $i + 0%!important;
+        }
+}
+
+// width viewport
+@for $i from 1 through 100 {
+    .vw-#{$i} { 
+        width: $i + 0vw!important;
+        }
+}
+
+// height %
+@for $i from 1 through 100 {
+    .h-#{$i} { 
+        height: $i + 0%!important;
+        }
+}
+
+// height viewport
+@for $i from 1 through 100 {
+    .vh-#{$i} { 
+        height: $i + 0vh!important;
+        }
+}
+
+// gap
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .gap-#{$i} { 
+        gap: $value + 0rem!important;
+        }
+}
+
+// margin
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .m-#{$i} { 
+        margin: $value + 0rem!important;
+        }
+}
+
+// margin-top
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .mt-#{$i} { 
+        margin-top: $value + 0rem!important;
+        }
+}
+
+// margin-bottom
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .mb-#{$i} { 
+        margin-bottom: $value + 0rem!important;
+        }
+}
+
+// margin-right
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .me-#{$i} { 
+        margin-right: $value + 0rem!important;
+        }
+}
+
+// margin-left
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .ms-#{$i} { 
+        margin-left: $value + 0rem!important;
+        }
+}
+
+// padding
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .p-#{$i} { 
+        padding: $value + 0rem!important;
+        }
+}
+
+// padding-top
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .pt-#{$i} { 
+        padding-top: $value + 0rem!important;
+        }
+}
+
+// padding-bottom
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .pb-#{$i} { 
+        padding-bottom: $value + 0rem!important;
+        }
+}
+
+// padding-right
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .pe-#{$i} { 
+        padding-right: $value + 0rem!important;
+        }
+}
+
+// padding-left
+@for $i from 1 through 10 {
+    $base: 0.25;
+    $value: $base * $i;
+    .ps-#{$i} { 
+        padding-left: $value + 0rem!important;
+        }
+}

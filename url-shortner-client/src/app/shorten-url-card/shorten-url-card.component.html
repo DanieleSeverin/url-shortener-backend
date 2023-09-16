@@ -1,0 +1,54 @@
+<!-- <mat-card>
+    <mat-card-title class="pb-4">Shorten a link</mat-card-title>
+
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Paste a link</mat-label>
+          <input matInput placeholder="https://example.com/" formControlName="link">
+          <mat-error *ngIf="link?.errors?.['required']">Required field</mat-error>
+          <mat-error *ngIf="link?.errors?.['pattern']">Not a link</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div *ngIf="shortenedUrl" style="background-color:lightblue; border-radius: 5px;" class="d-flex j-between p-4">
+        <div> {{ shortenedUrl}} </div>
+        <mat-icon class="pointer" (click)="copyToClipboard()" 
+            matTooltip="Copy to Clipboard" matTooltipPosition="above">
+                content_copy
+        </mat-icon>
+    </div>
+
+    <mat-card-actions align="end" class="mt-2">
+      <button mat-raised-button color="primary" (click)="shorten()" [disabled]="!form.valid">Shorten</button>
+    </mat-card-actions>
+</mat-card> -->
+
+<div class="container">
+  <h1>Shorten a link</h1>
+
+  <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Paste a link</mat-label>
+        <input matInput placeholder="https://example.com/" formControlName="link">
+        <mat-error *ngIf="link?.errors?.['required']">Required field</mat-error>
+        <mat-error *ngIf="link?.errors?.['pattern']">Not a link</mat-error>
+      </mat-form-field>
+  </form>
+
+  <div *ngIf="shortenedUrl" class="d-flex j-between a-center p-4 shortenedUrl">
+      <div> {{ shortenedUrl}} </div>
+
+      <div>
+        <mat-icon class="pointer me-2" (click)="copyToClipboard()" matTooltip="Copy to Clipboard" matTooltipPosition="above">
+            content_copy
+        </mat-icon>
+        <a [href]="shortenedUrl" target="_blank" matTooltip="Open in new tab" matTooltipPosition="above">
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </div>
+  </div>
+
+  <div class="mt-2 d-flex j-end">
+    <button mat-raised-button color="primary" (click)="shorten()" [disabled]="!form.valid">Shorten</button>
+  </div>
+</div>
