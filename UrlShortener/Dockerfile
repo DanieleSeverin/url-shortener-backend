@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["UrlShortener/UrlShortener.csproj", "UrlShortener/"]
+COPY ["./UrlShortener.csproj", "UrlShortener/"]
 RUN dotnet restore "UrlShortener/UrlShortener.csproj"
-COPY . .
 WORKDIR "/src/UrlShortener"
+COPY . .
 RUN dotnet build "UrlShortener.csproj" -c Release -o /app/build
 
 FROM build AS publish
