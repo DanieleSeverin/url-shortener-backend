@@ -4,7 +4,7 @@ services:
   urlshortener:
     image: ${DOCKER_REGISTRY-}urlshortener
     ports:
-      - "5001:443"
+      - "8080:443"
     container_name: UrlShortener.Api
     environment:
         ASPNETCORE_ENVIRONMENT: Development

@@ -26,22 +26,19 @@ var app = builder.Build();
 var subscriber = app.Services.GetRequiredService<UrlCodeGenerationSubscriber>();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.ApplyMigrations();
+
+app.UseCors(builder =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+});
 
-    app.ApplyMigrations();
-
-    app.UseCors(builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-}
-
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
