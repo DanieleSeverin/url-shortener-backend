@@ -21,7 +21,7 @@ builder.Configuration.AddEnvironmentVariables();
 
 var connectionString = builder.Configuration.GetConnectionString("POSTGRESQLCONNSTR_Database");
 
-if (!string.IsNullOrWhiteSpace(connectionString))
+if (string.IsNullOrWhiteSpace(connectionString))
 {
     connectionString = "User Id=postgres;Password=dEuViwuhixCiMBaj;Server=db.yjzxrjuqrjsubkwtoeqe.supabase.co;Port=5432;Database=Developement";
 }
