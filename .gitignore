@@ -4,6 +4,4 @@
 bin
 obj
 .containers
-appsettings.Development.json
-appsettings.json
-/UrlShortener/appsettings.json
+/UrlShortener/appsettings.Development.json

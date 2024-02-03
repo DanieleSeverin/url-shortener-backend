@@ -3,16 +3,22 @@ using UrlShortener;
 using UrlShortener.Extensions;
 using UrlShortener.UniqueUrlCodesGeneration;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("Database");
+builder.Configuration.AddEnvironmentVariables();
 
-builder.Services.AddDbContext<ApplicationDbContext>(o =>
-    o.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("Database") ??
+            throw new ArgumentNullException(nameof(builder.Configuration)); ;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+});
 
 builder.Services.AddSingleton<UrlShorteningService>();
 builder.Services.AddSingleton<UniqueUrlCodeProvider>();
@@ -21,6 +27,8 @@ builder.Services.AddSingleton<UrlCodeUsedEvent>();
 builder.Services.AddSingleton<UrlCodeGenerationSubscriber>();
 
 var app = builder.Build();
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Trigger subscription
 var subscriber = app.Services.GetRequiredService<UrlCodeGenerationSubscriber>();
