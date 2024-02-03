@@ -24,6 +24,7 @@ public class ExceptionHandlingMiddleware
         catch (Exception exception)
         {
             _logger.LogError(exception, "Exception occurred: {Message}", exception.Message);
+            Logger.Log(exception.Message);
 
             // Customize the error response based on the exception
             var response = new { error = exception.Message };
