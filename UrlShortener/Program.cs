@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UrlShortener;
-using UrlShortener.Extensions;
 using UrlShortener.Middlewares;
 using UrlShortener.UniqueUrlCodesGeneration;
-using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,13 +16,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddEnvironmentVariables();
 
-var connectionString = builder.Configuration.GetConnectionString("Database") ??
-            throw new ArgumentNullException(nameof(builder.Configuration));
+//var connectionString = builder.Configuration.GetConnectionString("Database") ??
+//            throw new ArgumentNullException(nameof(builder.Configuration));
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+var connectionString = builder.Configuration.GetConnectionString("Database");
+
+if (!string.IsNullOrWhiteSpace(connectionString))
 {
-    options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
-});
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    {
+        options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+    });
+}
 
 builder.Services.AddSingleton<UrlShorteningService>();
 builder.Services.AddSingleton<UniqueUrlCodeProvider>();
