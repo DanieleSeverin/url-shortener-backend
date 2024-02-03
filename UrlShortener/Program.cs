@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UrlShortener;
 using UrlShortener.Extensions;
+using UrlShortener.Middlewares;
 using UrlShortener.UniqueUrlCodesGeneration;
 
 
@@ -34,6 +35,8 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var subscriber = app.Services.GetRequiredService<UrlCodeGenerationSubscriber>();
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
