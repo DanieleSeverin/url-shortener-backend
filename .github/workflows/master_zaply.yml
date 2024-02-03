@@ -41,7 +41,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     env:
-      DATABASE_CONNECTION_STRING: ${{ secrets.DATABASE }}
+      DATABASE: ${{ secrets.DATABASE }}
 
     steps:
       - name: Download artifact from build job
