@@ -19,7 +19,7 @@ builder.Configuration.AddEnvironmentVariables();
 //var connectionString = builder.Configuration.GetConnectionString("Database") ??
 //            throw new ArgumentNullException(nameof(builder.Configuration));
 
-var connectionString = builder.Configuration.GetConnectionString("Database");
+var connectionString = builder.Configuration.GetConnectionString("POSTGRESQLCONNSTR_Database");
 
 if (!string.IsNullOrWhiteSpace(connectionString))
 {
