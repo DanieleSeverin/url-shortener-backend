@@ -23,11 +23,13 @@ var connectionString = builder.Configuration.GetConnectionString("POSTGRESQLCONN
 
 if (!string.IsNullOrWhiteSpace(connectionString))
 {
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    {
-        options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
-    });
+    connectionString = "User Id=postgres;Password=dEuViwuhixCiMBaj;Server=db.yjzxrjuqrjsubkwtoeqe.supabase.co;Port=5432;Database=Developement";
 }
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+});
 
 builder.Services.AddSingleton<UrlShorteningService>();
 builder.Services.AddSingleton<UniqueUrlCodeProvider>();
