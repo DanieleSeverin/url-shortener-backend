@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UrlShortener.Entities;
 using UrlShortener.Models;
 using UrlShortener.UniqueUrlCodesGeneration;
@@ -19,6 +20,14 @@ public class UrlShortenerController : ControllerBase
         _uniqueUrlCodeProvider = uniqueUrlCodeProvider;
         _dbContext = dbContext;
         _urlCodeUsedEvent = urlCodeUsedEvent;
+    }
+
+    [HttpGet]
+    [Route("api/test")]
+    public async Task<IActionResult> Test()
+    {
+        var result = await _dbContext.ShortenedUrls.ToListAsync();
+        return Ok(result);
     }
 
     [HttpPost]
