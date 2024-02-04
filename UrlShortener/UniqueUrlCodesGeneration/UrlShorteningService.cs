@@ -23,8 +23,8 @@ public sealed class UrlShorteningService
         {
             var _dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         
-            while (true)
-            {
+            //while (true)
+            //{
                 for (var i = 0; i < NumberOfCharsInShortLink; i++)
                 {
                     var randomIndex = _random.Next(Alphabet.Length - 1);
@@ -38,7 +38,9 @@ public sealed class UrlShorteningService
                 {
                     return code;
                 }
-            }
+
+            throw new Exception($"Code {code} already exists.");
+            //}
         }
     }
 }
