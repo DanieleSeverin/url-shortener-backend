@@ -42,7 +42,8 @@ public class UrlShortenerController : ControllerBase
         await _dbContext.SaveChangesAsync();
 
         // Run this in the background
-        Task.Run(() => _urlCodeUsedEvent.OnCodeUsed());
+        //Task.Run(() => _urlCodeUsedEvent.OnCodeUsed());
+        await _urlCodeUsedEvent.OnCodeUsed();
 
         return Ok(new ShortenUrl() { Url = shortenedUrl.ShortUrl });
     }
