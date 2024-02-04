@@ -19,8 +19,9 @@ builder.Configuration.AddEnvironmentVariables();
 //var connectionString = builder.Configuration.GetConnectionString("Database") ??
 //            throw new ArgumentNullException(nameof(builder.Configuration));
 
-var connectionString = System.Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Database") ??
-    builder.Configuration.GetConnectionString("POSTGRESQLCONNSTR_Database");
+var connectionString = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Database") ??
+    builder.Configuration.GetConnectionString("POSTGRESQLCONNSTR_Database") ??
+    throw new ArgumentNullException(nameof(builder.Configuration));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
