@@ -26,7 +26,11 @@ public class ExceptionHandlingMiddleware
             _logger.LogError(exception, "Exception occurred: {Message}", exception.Message);
 
             // Customize the error response based on the exception
-            var response = new { error = exception.Message };
+            var response = new 
+            {
+                error = exception.Message, 
+                innerException = exception.InnerException?.Message 
+            };
 
             // Set the response status code and content type
             context.Response.StatusCode = 500;
