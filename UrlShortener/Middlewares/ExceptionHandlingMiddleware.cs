@@ -31,7 +31,7 @@ public class ExceptionHandlingMiddleware
             {
                 error = exception.Message, 
                 stackTrace = exception.StackTrace?.ToString(),
-                innerException = exception.InnerException?.Message,
+                innerException = $"{exception.InnerException?.Message} {exception.InnerException?.InnerException?.Message}",
                 innerExceptionStackTrace = exception.InnerException?.StackTrace?.ToString(),
             };
 
