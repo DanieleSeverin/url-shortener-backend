@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Text.Json;
 
 namespace UrlShortener.Middlewares;
 
@@ -29,7 +30,9 @@ public class ExceptionHandlingMiddleware
             var response = new 
             {
                 error = exception.Message, 
-                innerException = exception.InnerException?.Message 
+                stackTrace = exception.StackTrace?.ToString(),
+                innerException = exception.InnerException?.Message,
+                innerExceptionStackTrace = exception.InnerException?.StackTrace?.ToString(),
             };
 
             // Set the response status code and content type
