@@ -11,7 +11,7 @@ public sealed class UrlCodeGenerationSubscriber
     {
         _UrlShorteningService = urlShorteningService;
         codeUsedEvent.CodeUsed += async (sender, e) => await GenerateCodesAsync(uniqueUrlCodePool);
-        codeUsedEvent.OnCodeUsed();
+        //codeUsedEvent.OnCodeUsed();
     }
 
     private async Task GenerateCodesAsync(UniqueUrlCodesPool uniqueUrlCodePool)

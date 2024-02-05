@@ -33,7 +33,6 @@ public class ExceptionHandlingMiddleware
                 stackTrace = exception.StackTrace?.ToString(),
                 innerException = $"{exception.InnerException?.Message} {exception.InnerException?.InnerException?.Message}",
                 innerExceptionStackTrace = exception.InnerException?.StackTrace?.ToString(),
-                connectionString = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Database") ?? "NOT FOUND"
             };
 
             // Set the response status code and content type

@@ -25,7 +25,8 @@ var connectionString = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Dat
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+    options.UseNpgsql(connectionString)
+        .UseSnakeCaseNamingConvention();
 });
 
 builder.Services.AddSingleton<UrlShorteningService>();

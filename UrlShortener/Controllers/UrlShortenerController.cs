@@ -52,7 +52,7 @@ public class UrlShortenerController : ControllerBase
 
         // Run this in the background
         //Task.Run(() => _urlCodeUsedEvent.OnCodeUsed());
-        await _urlCodeUsedEvent.OnCodeUsed();
+        //await _urlCodeUsedEvent.OnCodeUsed();
 
         return Ok(new ShortenUrl() { Url = shortenedUrl.ShortUrl });
     }
